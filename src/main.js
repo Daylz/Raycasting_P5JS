@@ -21,17 +21,38 @@ function setup() {
 function draw() {
     background(0);
 
+    let keySum = 0
+
     if (player != null)
     {
         let deltaTime = 1 / frameRate() != Infinity ? 1 / frameRate() : 0;
     
         player.position = player.position.add(50 * deltaTime, 0)
+
+        if (keyIsDown(87)) // up
+        {
+            keySum += 1
+        }
+
+        if (keyIsDown(83)) // down
+        {
+            keySum += 2
+        }
+
+        if (keyIsDown(65)) // left
+        {
+            keySum += 4
+        }
+
+        if (keyIsDown(68)) // right
+        {
+            keySum += 8
+        }
     
-        print(deltaTime)
+        print(keySum)
     
         player.show()
     }
-
     
     fpsCounter.show();
 }
